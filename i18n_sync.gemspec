@@ -24,6 +24,5 @@ Gem::Specification.new do |gem|
 
   gem.required_rubygems_version = Gem::Requirement.new(">= 0") if gem.respond_to? :required_rubygems_version=
 
-  gem.add_dependency('ya2yaml', [">= 0"])
   gem.add_development_dependency("rspec", ["~> 2.8.0"])
 end
