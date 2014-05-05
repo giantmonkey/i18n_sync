@@ -2,11 +2,6 @@
 # Inspired by translation rake task on spree (http://spreecommerce.com/)
 #
 require 'yaml'
-# Changed to use YAML instead of text regex,
-# but yaml has issues so we need to:
-require 'ya2yaml'
-# In order to work with utf8 encoded .yml files.
-# TODO: Fixed in ruby 1.9.x ???
 
 class Hash
   def deep_merge!(other_hash)
@@ -106,9 +101,9 @@ class I18S
   #Writes to file from translation data hash structure
   def write_file(filename, basename, comments, data)
     File.delete filename if File.exists? filename
-    File.open(filename, "w:utf-8") do |y|
+    File.open(filename, "w") do |y|
       y.puts(comments) if comments
-      y.puts({ basename => data }.ya2yaml )
+      y.puts({ basename => data }.to_yaml )
     end
   end
 
