@@ -103,7 +103,7 @@ class I18S
     File.delete filename if File.exists? filename
     File.open(filename, "w") do |y|
       y.puts(comments) if comments
-      y.puts({ basename => data }.to_yaml )
+      y.puts(YAML.dump({ basename => data }) )
     end
   end
 
